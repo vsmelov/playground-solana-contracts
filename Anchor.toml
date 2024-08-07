@@ -5,14 +5,17 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-playground_solana_contracts = "7AwuU7HNHrE2GgS4tRdZLdnJmG4Pz5HjgDkd7fDVtoLK"
+playground_solana_contracts = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "Localnet"
-wallet = "/home/vsm/.config/solana/id.json"
+wallet = "./id.json"
+
+#[scripts]
+#test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "node --stack-trace-limit=10000 node_modules/.bin/ts-mocha -p ./tsconfig.json -t 1000000 --full-trace tests/**/*.ts"
